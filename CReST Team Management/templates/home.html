@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1 class="mb-4">Welcome to the CReST!</h1>
+
+            {% if user %}
+                <!-- Profile Section -->
+                <div class="profile-picture-container mb-4">
+                    <img src="{{ user.profile_picture }}" alt="Profile Picture" class="profile-picture">
+                </div>
+                <p class="h4">Hello, {{ user.username }}!</p>
+            {% else %}
+                <p class="h5">Please <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg">log in</a> or <a href="{{ url_for('register') }}" class="btn btn-secondary btn-lg">register</a> to continue.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <style>
+        /* Profile picture container styles */
+        .profile-picture-container {
+            text-align: center; /* Center the profile picture */
+            margin-bottom: 20px; /* Space below the image */
+        }
+
+        /* Profile picture styles */
+        .profile-picture {
+            width: 240px; /* Adjust the size of the circle */
+            height: 240px; /* Ensure it's a perfect circle */
+            border-radius: 50%; /* Makes the image round */
+            object-fit: cover; /* Ensures the image covers the circle without distortion */
+            border: 2px solid #ccc; /* Optional: adds a border around the image */
+        }
+
+        /* Ensuring the page content is centered and responsive */
+        .container {
+            max-width: 800px; /* Limit the width for better readability */
+        }
+
+        /* Style the login/register buttons */
+        .btn-primary, .btn-secondary {
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+
+        /* Responsive Design: Adjust text size for smaller screens */
+        @media (max-width: 768px) {
+            .profile-picture {
+                width: 120px;
+                height: 120px;
+            }
+            .h4, .h5 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+{% endblock %}

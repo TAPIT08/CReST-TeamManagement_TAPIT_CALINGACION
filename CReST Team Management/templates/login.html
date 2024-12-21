@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <h1 class="text-center mb-4">Login</h1>
+
+                <!-- Login Form -->
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                    </div>
+                </form>
+
+                <div class="text-center mt-3">
+                    <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Center the login form and make it responsive */
+        .container {
+            max-width: 600px; /* Limit max-width for readability */
+        }
+
+        /* Form label and input styling */
+        .form-label {
+            font-weight: bold;
+        }
+
+        /* Login Button Styling */
+        .btn-lg {
+            padding: 12px 20px;
+            font-size: 18px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin-top: 20px; /* Less top margin on smaller screens */
+            }
+        }
+    </style>
+{% endblock %}
